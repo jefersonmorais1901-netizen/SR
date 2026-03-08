@@ -1,0 +1,205 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Para Flaviana ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#ff6a88,#ff99ac);
+color:black;
+text-align:center;
+overflow-x:hidden;
+}
+
+.container{
+margin-top:40px;
+padding:20px;
+}
+
+h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+p{
+font-size:22px;
+max-width:700px;
+margin:auto;
+}
+
+#contador{
+margin-top:15px;
+font-size:22px;
+font-weight:bold;
+}
+
+button{
+margin-top:20px;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* FOTO */
+
+.foto{
+margin-top:25px;
+}
+
+.foto img{
+width:340px;
+border-radius:20px;
+box-shadow:0 15px 30px rgba(0,0,0,0.4);
+}
+
+/* CARTAS */
+
+.carta{
+display:none;
+background:rgba(255,255,255,0.2);
+padding:20px;
+margin:20px auto;
+width:70%;
+border-radius:20px;
+font-size:20px;
+}
+
+/* CORAÇÕES */
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Para Flaviana ❤️</h1>
+
+<p>
+Desde <b>10/08/2024</b> minha vida ficou mais bonita  
+porque você entrou nela.
+</p>
+
+<div id="contador"></div>
+
+<div class="foto">
+<img src="foto.jpeg">
+</div>
+
+<button onclick="abrirCarta(1)">Abrir carta 1 💌</button>
+<button onclick="abrirCarta(2)">Abrir carta 2 💌</button>
+<button onclick="abrirCarta(3)">Abrir carta 3 💌</button>
+
+<div id="carta1" class="carta">
+Flaviana, cada momento com você é especial.  
+Seu sorriso ilumina meus dias e me faz querer  
+ser alguém melhor todos os dias.
+</div>
+
+<div id="carta2" class="carta">
+Obrigado por estar ao meu lado,  
+por cada abraço, cada risada  
+e por transformar momentos simples  
+em lembranças inesquecíveis.
+</div>
+
+<div id="carta3" class="carta">
+Eu não sei o que o futuro reserva,  
+mas sei que quero viver cada parte dele com você.  
+Eu te amo ❤️
+</div>
+
+</div>
+
+<script>
+
+/* CONTADOR */
+
+const inicio = new Date("2024-08-10");
+
+function atualizar(){
+
+const agora = new Date();
+
+let anos = agora.getFullYear() - inicio.getFullYear();
+let meses = agora.getMonth() - inicio.getMonth();
+let dias = agora.getDate() - inicio.getDate();
+
+if(dias < 0){
+meses--;
+dias += 30;
+}
+
+if(meses < 0){
+anos--;
+meses += 12;
+}
+
+document.getElementById("contador").innerHTML =
+"Estamos juntos há ❤️ " + anos + " anos, " + meses + " meses e " + dias + " dias";
+
+}
+
+setInterval(atualizar,1000);
+atualizar();
+
+/* CARTAS */
+
+function abrirCarta(num){
+document.getElementById("carta"+num).style.display="block";
+}
+
+/* CORAÇÕES */
+
+function criarCoracao(){
+
+const heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000)
+
+}
+
+setInterval(criarCoracao,300);
+
+</script>
+
+</body>
+</html>
+```
